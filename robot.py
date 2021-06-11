@@ -5,7 +5,7 @@ class Robot:
         self.name = name
         self.health = 100
         self.power_level = 100
-        self.weapon = []
+        self.weapon = None
 
     def robot_name(self):
         self.name = input("Enter your robot's name:")
@@ -19,10 +19,10 @@ class Robot:
         else:
             print(f"{self.name}) has no health or power!")"""
     def weapon_choice(self):
-        weapon_one = Weapon()
-        weapon_one.rando_weapons()
-        weapon_one.attack_power()
+        self.weapon = Weapon()
+        self.weapon.rando_weapons()
+        self.weapon.attack_power()
 
     def robo_attack(self):
-#         robot attacks dino
-pass
+#       robot attacks dino
+        pass

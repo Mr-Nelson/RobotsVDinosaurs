@@ -15,5 +15,5 @@ class Dinosaur:
         print(f"Your {self.type} has {number} attack power!")
 
     def dino_attack(self):
-        # dino attacks robot
-pass
+#       dino attacks robot
+        pass
