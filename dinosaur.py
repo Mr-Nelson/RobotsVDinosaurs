@@ -1,5 +1,6 @@
 import battlefield
 from battlefield import Battlefield
+
 class Dinosaur:
     def __init__(self, type, attack_power):
         self.type = type
@@ -17,8 +18,6 @@ class Dinosaur:
         print(f"Your {self.type} has {number} attack power!")
 """
 
-
     def dino_attack(self):
-        fighting_robot.health -= fight_dino.attack_power
-        print(f"{battlefield.battle.fighting_dino.type} hits {fighting_robot.name} for {fighting_dino.attaack_power} points.")
+        battlefield.Battlefield.dino_turn(self.fighting_robot).health -= battlefield.Battlefield.dino_turn(self.fighting_dino).attack_power
         pass

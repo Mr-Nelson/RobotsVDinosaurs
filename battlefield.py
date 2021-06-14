@@ -18,10 +18,10 @@ class Battlefield:
 
     def dino_turn(self):
         self.fighting_dino.dino_attack
-
+        print(f"{self.fighting_dino.type} hits {self.fighting_robot.name} for {self.fighting_dino.attaack_power} points.")
     def robot_turn(self):
         self.fighting_robot.robo_attack
-
+        print(f"{self.fighting_robot.name} hits {self.fighting_dino.type} for {self.fighting_robot.attaack_power} points.")
     def show_dino_opponent_options(self):
         pass
     def show_robot_opponent_options(self):
