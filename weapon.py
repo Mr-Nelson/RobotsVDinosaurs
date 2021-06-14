@@ -3,7 +3,7 @@ class Weapon:
         self.weapon_type = type
         self.attack_power = attack_power
 
-"""
+    """
      def rando_weapons(self):
         self.weapon_type = input ("Choose your weapon.")
         print(f"Your robot has the {self.weapon_type}!")
@@ -13,4 +13,4 @@ class Weapon:
         number = int(input)
         print (f"Your robot has {number} attack power!")
 
-"""
+    """

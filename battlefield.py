@@ -17,10 +17,13 @@ class Battlefield:
         self.fighting_dino = random.randrange(self.import_herd)
 
     def dino_turn(self):
+        dino = self.fighting_dino
+        robot = self.fighting_robot
         self.fighting_dino.dino_attack
         print(f"{self.fighting_dino.type} hits {self.fighting_robot.name} for {self.fighting_dino.attaack_power} points.")
     def robot_turn(self):
-        self.fighting_robot.robo_attack
+        dino = self.fighting_dino
+        robot = self.fighting_robot
         print(f"{self.fighting_robot.name} hits {self.fighting_dino.type} for {self.fighting_robot.attaack_power} points.")
     def show_dino_opponent_options(self):
         pass

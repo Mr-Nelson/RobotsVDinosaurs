@@ -1,6 +1,5 @@
-import battlefield
+import weapon
 from weapon import Weapon
-from battlefield import Battlefield
 
 class Robot:
     def __init__(self, name):
@@ -22,11 +21,10 @@ class Robot:
             print(f"{self.name} is full on health and power!")
         else:
             print(f"{self.name}) has no health or power!")"""
-    def weapon_choice(self):
-        self.weapon = Weapon()
+    def weapon_choice(self, type, attack_power):
+        self.weapon = Weapon(type, attack_power)
         # self.weapon.rando_weapons()
         # self.weapon.attack_power()
 
     def robo_attack(self):
-        battlefield.Battlefield.robot_turn(self.fighting_dino).health -= battlefield.Battlefield.robot_turn(self.fighting_robot).attack_power
-        pass
+      ("dino").health -= ("robot").attack_power
