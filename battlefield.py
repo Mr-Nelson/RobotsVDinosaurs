@@ -1,4 +1,6 @@
 import random
+
+import battlefield
 from herd import Herd
 from fleet import Fleet
 
@@ -10,11 +12,15 @@ class Battlefield:
         self.import_herd.dino_herd()
 
     def run_game(self):
-            print ("Welcome to the Thunder Dome!")
-
+        print ("Welcome to the Thunder Dome!")
+        battlefield.Battlefield.battle(self)
+        battlefield.Battlefield.dino_turn(self)
+        battlefield.Battlefield.robot_turn(self)
+        battlefield.Battlefield.show_dino_opponent_options(self)
+        battlefield.Battlefield.show_robo_opponent_options(self)
     def battle(self):
-        self.fighting_robot = random.randrange(self.import_fleet)
-        self.fighting_dino = random.randrange(self.import_herd)
+        self.fighting_robot = random.randrange(self.import_fleet[])
+        self.fighting_dino = random.randrange(self.import_herd[])
 
     def dino_turn(self):
         dino = self.fighting_dino
@@ -26,8 +32,19 @@ class Battlefield:
         robot = self.fighting_robot
         print(f"{self.fighting_robot.name} hits {self.fighting_dino.type} for {self.fighting_robot.attaack_power} points.")
     def show_dino_opponent_options(self):
-        pass
+        if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
+            battlefield.Battlefield.dino_turn()
+        if self.fighting_robot.health == 0 or self.fighting_dino.health == 0:
+            battlefield.Battlefield.battle()
+
     def show_robot_opponent_options(self):
-        pass
+        if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
+           battlefield.Battlefield.robot_turn()
+        if self.fighting_robot.health == 0 or self.fighting_dino.health == 0:
+          battlefield.Battlefield.battle()
+
     def display_winners(self):
-        pass
+        if Fleet.robot_one.health == 0 and Fleet.robot_two.health == 0 and Fleet.robot_three.health == 0:
+            print ("The dinosaurs defeated your robots!")
+        if Herd.dino_one.health == 0 and Herd.dino_two.health == 0 and Herd.dino_three.health == 0:
+            print ("Your fleet of robots won!")
