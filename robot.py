@@ -1,4 +1,3 @@
-import weapon
 from weapon import Weapon
 
 class Robot:
@@ -26,5 +25,5 @@ class Robot:
         # self.weapon.rando_weapons()
         # self.weapon.attack_power()
 
-    def robo_attack(self):
-      ("dino").health -= ("robot").attack_power
+    def robo_attack(self, dinoToAttack):
+        dinoToAttack.health -= self.weapon.attack_power

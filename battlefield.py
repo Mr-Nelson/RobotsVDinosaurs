@@ -1,6 +1,5 @@
 import random
 
-import battlefield
 from herd import Herd
 from fleet import Fleet
 
@@ -10,41 +9,49 @@ class Battlefield:
         self.import_fleet.robot_fleet()
         self.import_herd = Herd()
         self.import_herd.dino_herd()
-
+        self.dead_robots = []
+        self.dead_dinos = []
     def run_game(self):
-        print ("Welcome to the Thunder Dome!")
-        battlefield.Battlefield.battle(self)
-        battlefield.Battlefield.dino_turn(self)
-        battlefield.Battlefield.robot_turn(self)
-        battlefield.Battlefield.show_dino_opponent_options(self)
-        battlefield.Battlefield.show_robo_opponent_options(self)
+        print("Welcome to the Thunder Dome!")
+        self.battle()
+        self.dino_turn()
+        self.robot_turn()
+        self.show_dino_opponent_options()
+        self.show_robot_opponent_options()
+        self.display_winners()
+
     def battle(self):
-        self.fighting_robot = random.randrange(self.import_fleet[])
-        self.fighting_dino = random.randrange(self.import_herd[])
+        self.fighting_robot = random.choices(self.import_fleet.robots)[0]
+        self.fighting_dino = random.choices(self.import_herd.dinos)[0]
 
     def dino_turn(self):
-        dino = self.fighting_dino
-        robot = self.fighting_robot
-        self.fighting_dino.dino_attack
-        print(f"{self.fighting_dino.type} hits {self.fighting_robot.name} for {self.fighting_dino.attaack_power} points.")
+        self.fighting_dino.dino_attack(self.fighting_robot)
+        print(f"{self.fighting_dino.type} hits {self.fighting_robot.name} for {self.fighting_dino.attack_power} points.")
     def robot_turn(self):
-        dino = self.fighting_dino
-        robot = self.fighting_robot
-        print(f"{self.fighting_robot.name} hits {self.fighting_dino.type} for {self.fighting_robot.attaack_power} points.")
+        self.fighting_robot.robo_attack(self.fighting_dino)
+        print(f"{self.fighting_robot.name} hits {self.fighting_dino.type} for {self.fighting_robot.weapon.attack_power} points.")
     def show_dino_opponent_options(self):
         if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
-            battlefield.Battlefield.dino_turn()
-        if self.fighting_robot.health == 0 or self.fighting_dino.health == 0:
-            battlefield.Battlefield.battle()
+            self.dino_turn()
+        if self.fighting_robot.health <= 0:
+            self.import_fleet(self.fighting_robot)
+            self.battle()
+        if self.fighting_dino.health <= 0:
+            self.import_herd.remove(self.fighting_dino)
+            self.battle()
 
     def show_robot_opponent_options(self):
         if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
-           battlefield.Battlefield.robot_turn()
-        if self.fighting_robot.health == 0 or self.fighting_dino.health == 0:
-          battlefield.Battlefield.battle()
+            self.robot_turn()
+        if self.fighting_robot.health <= 0:
+            self.import_fleet(self.fighting_robot)
+            self.battle()
+        if self.fighting_dino.health <= 0:
+            self.import_herd.remove(self.fighting_dino)
+            self.battle()
 
     def display_winners(self):
-        if Fleet.robot_one.health == 0 and Fleet.robot_two.health == 0 and Fleet.robot_three.health == 0:
-            print ("The dinosaurs defeated your robots!")
-        if Herd.dino_one.health == 0 and Herd.dino_two.health == 0 and Herd.dino_three.health == 0:
-            print ("Your fleet of robots won!")
+        if self.import_fleet == 0:
+            print("The dinosaurs defeated your robots!")
+        if self.import_herd == 0:
+            print("Your fleet of robots won!")
