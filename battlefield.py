@@ -34,7 +34,7 @@ class Battlefield:
         if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
             self.dino_turn()
         if self.fighting_robot.health <= 0:
-            self.import_fleet(self.fighting_robot)
+            self.import_fleet.remove(self.fighting_robot)
             self.battle()
         if self.fighting_dino.health <= 0:
             self.import_herd.remove(self.fighting_dino)
@@ -44,7 +44,7 @@ class Battlefield:
         if self.fighting_robot.health > 0 and self.fighting_dino.health > 0:
             self.robot_turn()
         if self.fighting_robot.health <= 0:
-            self.import_fleet(self.fighting_robot)
+            self.import_fleet.remove(self.fighting_robot)
             self.battle()
         if self.fighting_dino.health <= 0:
             self.import_herd.remove(self.fighting_dino)
